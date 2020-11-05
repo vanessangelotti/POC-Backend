@@ -8,6 +8,8 @@ namespace Poc.Impressao.Interfaces
     public interface IPDF
     {
 
-        byte[] Converter(string html, List<Parametro> parametros);
+        byte[] ConverterLinkToPdf(string html, List<Parametro> parametros);
+
+        byte[] ConverterDynymicPdf(string html, List<Parametro> parametros);
     }
 }

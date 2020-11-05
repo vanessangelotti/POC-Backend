@@ -25,14 +25,26 @@ namespace Poc.API.Controllers
         {
             var templateHtml = System.IO.File.ReadAllText(@".\Html\Template.html");
 
-            var file = _Ipdf.Converter(templateHtml, requisicao.Parametros);
+            var file = _Ipdf.ConverterLinkToPdf(templateHtml, requisicao.Parametros);
 
             return new Retorno<byte[]> { Objeto = file , Codigo = HttpStatusCode.OK};
 
 
         }
 
-        
+        [HttpPost]
+        [Route("ConverterDynamicToPDF")]
+        public Retorno<byte[]> ConverterDynamicToPDF(RequisicaoPDF requisicao)
+        {
+            var templateHtml = System.IO.File.ReadAllText(@".\Html\Template.html");
+
+            var file = _Ipdf.ConverterDynymicPdf(templateHtml, requisicao.Parametros);
+
+            return new Retorno<byte[]> { Objeto = file, Codigo = HttpStatusCode.OK };
+
+        }
+
+
 
     }
 }

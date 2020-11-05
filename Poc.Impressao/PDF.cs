@@ -4,6 +4,7 @@ using Poc.Impressao.Entidades;
 using Poc.Impressao.Interfaces;
 using System;
 using System.Collections.Generic;
+using ceTe.DynamicPDF.HtmlConverter;
 
 namespace Poc.Impressao
 {
@@ -15,13 +16,22 @@ namespace Poc.Impressao
             _conversor = conversor;
         }
 
-        public byte[] Converter(string html, List<Parametro> parametros)
+        public byte[] ConverterLinkToPdf(string html, List<Parametro> parametros)
         {
 
             html = SubstituirParametro(html, parametros);
 
             return Converter(html, ColorMode.Color, Orientation.Portrait, PaperKind.A4);
         }
+
+        public byte[] ConverterDynymicPdf(string html, List<Parametro> parametros)
+        {
+            html = SubstituirParametro(html, parametros);
+
+            return ceTe.DynamicPDF.HtmlConverter.Converter.Convert(html, null, null);
+
+        }
+
 
         private string SubstituirParametro(string html, List<Parametro> parametros)
         {
@@ -35,7 +45,7 @@ namespace Poc.Impressao
 
         }
 
-        private byte[] Converter(string html, ColorMode cor, Orientation orientacao, PaperKind tipoPapel )
+        private byte[] Converter(string html, ColorMode cor, Orientation orientacao, PaperKind tipoPapel)
         {
 
             var doc = new HtmlToPdfDocument()
