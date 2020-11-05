@@ -9,7 +9,7 @@ namespace Poc.API.View
     public class RequisicaoPDF
     {
 
-        public string Html { get; set; }
+        //public string Html { get; set; }
 
         public List<Parametro> Parametros { get; set; }
     }

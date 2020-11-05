@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace Poc.CrossCutting.View
 {
@@ -7,6 +8,6 @@ namespace Poc.CrossCutting.View
 
         public T Objeto { get; set; }
         public string Mensagem { get; set; }
-        public int Codigo { get; set; }
+        public HttpStatusCode Codigo { get; set; }
     }
 }
