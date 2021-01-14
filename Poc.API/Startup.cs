@@ -39,13 +39,13 @@ namespace Poc.API
 
             var ioc = new InjectionContainer();
             services = ioc.ObterScopo(services);
-#if DEBUG
+            //#if DEBUG
             //windows
             string filePath = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\dlls\libwkhtmltox.dll";
-#else
-            //linux
-            string filePath = $@"{(($@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/dlls/libwkhtmltox.so").Replace(@"\", @"/"))}";
-#endif
+            //#else
+            //            //linux
+            //            string filePath = $@"{(($@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/dlls/libwkhtmltox.so").Replace(@"\", @"/"))}";
+            //#endif
             CustomAssemblyLoadContext context = new CustomAssemblyLoadContext();
             context.LoadUnmanagedLibrary(filePath);
 
